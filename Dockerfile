@@ -28,9 +28,6 @@ RUN npm install --silent && npm cache clean --force
 # Luego copia el resto del código
 COPY . .
 
-# Genera Prisma
-RUN npm run prisma:generate
-
 # Expone el puerto del frontend
 EXPOSE 3000
 
