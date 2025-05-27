@@ -1,0 +1,12 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry"
+  },
+  "games": {
+    "title": "Game List",
+    "empty": "No games found",
+    "details": "Game Details"
+  }
+}
