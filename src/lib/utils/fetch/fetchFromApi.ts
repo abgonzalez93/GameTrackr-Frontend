@@ -9,6 +9,54 @@ type FetchParams = {
   body?: BodyInit | null
   cache?: RequestCache
   next?: NextFetchRequestConfig
+  filters?: Record<string, unknown>
+}
+
+/**
+ * Converts an object of filters to a query string.
+ *
+ * @param filters - Query parameters as key-value pairs
+ * @returns A query string starting with "?" or an empty string
+ */
+const buildQueryParams = (filters: Record<string, unknown>): string => {
+  const params = new URLSearchParams()
+
+  for (const [key, value] of Object.entries(filters)) {
+    if (value === undefined || value === null || value === '') continue
+
+    if (Array.isArray(value)) {
+      value.forEach((v) => {
+        if (v !== undefined && v !== null && v !== '') {
+          params.append(key, String(v))
+        }
+      })
+    } else {
+      params.set(key, String(value))
+    }
+  }
+
+  const query = params.toString()
+  return query ? `?${query}` : ''
+}
+
+/**
+ * Prepares the final request URL and options by appending query parameters
+ * and stripping internal-only fields like `query`.
+ *
+ * @param endpoint - Base endpoint path (e.g., "/games")
+ * @param options - Fetch options, possibly including a `query` object
+ * @returns An object with the final endpoint string and cleaned options
+ */
+const prepareRequestInput = (
+  endpoint: string,
+  options?: FetchParams,
+): { endpoint: string; options: FetchParams } => {
+  const { filters, ...restOptions } = options ?? {}
+  const queryString = filters ? buildQueryParams(filters) : ''
+  return {
+    endpoint: `${endpoint}${queryString}`,
+    options: restOptions,
+  }
 }
 
 /**
@@ -75,7 +123,7 @@ const handleErrorResponse = (res: Response, parsed: unknown): never => {
 /**
  * Makes an HTTP request to the external API using the specified method.
  *
- * @template T - The expected response type.
+ * @template T - The expected response type
  * @param method - HTTP method (GET, POST, etc.)
  * @param endpoint - Relative path to the API endpoint (e.g., "/games")
  * @param options - Optional fetch configuration (headers, body, etc.)
@@ -96,22 +144,40 @@ const request = async <T>(
 }
 
 /**
+ * Executes a typed HTTP request using a dynamic method.
+ *
+ * @template T - The expected response type
+ * @param method - HTTP method (GET, POST, etc.)
+ * @param endpoint - API endpoint (e.g., "/games")
+ * @param options - Optional fetch configuration
+ * @returns A promise resolving to the typed response
+ */
+const method = <T>(
+  method: Method,
+  endpoint: string,
+  options?: FetchParams,
+): Promise<T> => {
+  const { endpoint: finalEndpoint, options: finalOptions } = prepareRequestInput(endpoint, options)
+  return request<T>(method, finalEndpoint, finalOptions)
+}
+
+/**
  * Typed API client for external HTTP requests.
- * Provides method shortcuts with consistent base URL and error handling.
+ * Provides method shortcuts with consistent base URL, query string handling, and error processing.
  */
 export const fetchFromApi = {
   get: <T>(endpoint: string, options?: FetchParams) =>
-    request<T>('GET', endpoint, options),
+    method<T>('GET', endpoint, options),
 
   post: <T>(endpoint: string, options?: FetchParams) =>
-    request<T>('POST', endpoint, options),
+    method<T>('POST', endpoint, options),
 
   put: <T>(endpoint: string, options?: FetchParams) =>
-    request<T>('PUT', endpoint, options),
+    method<T>('PUT', endpoint, options),
 
   patch: <T>(endpoint: string, options?: FetchParams) =>
-    request<T>('PATCH', endpoint, options),
+    method<T>('PATCH', endpoint, options),
 
   delete: <T = void>(endpoint: string, options?: FetchParams) =>
-    request<T>('DELETE', endpoint, options),
+    method<T>('DELETE', endpoint, options),
 }

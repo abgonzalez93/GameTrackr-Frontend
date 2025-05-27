@@ -1,5 +1,5 @@
-import { buildQueryParams, fetchFromApi } from '@utils/index'
 import { IGDBGame, IGDBGameFilters } from '@schemas/index'
+import { fetchFromApi } from '@utils/index'
 
 /**
  * API client for interacting with the /games endpoint.
@@ -14,8 +14,7 @@ export const games = {
    * @returns List of games from the API.
    */
   async getAll(filters: Partial<IGDBGameFilters> = {}): Promise<IGDBGame[]> {
-    const query = buildQueryParams(filters)
-    return fetchFromApi.get<IGDBGame[]>(`/games${query}`)
+    return fetchFromApi.get<IGDBGame[]>('/games', { filters })
   },
 
   /**
