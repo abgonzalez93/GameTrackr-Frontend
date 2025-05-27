@@ -18,15 +18,15 @@
       "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@constants/*": ["constants/*"],
+      "@errors/*": ["errors/*"],
       "@fonts/*": ["fonts/*"],
       "@hooks/*": ["hooks/*"],
-      "@api/*": ["lib/api/*"],
-      "@errors/*": ["lib/errors/*"],
-      "@metadata/*": ["lib/metadata/*"],
-      "@schemas/*": ["lib/schemas/*"],
-      "@utils/*": ["lib/utils/*"],
       "@locales/*": ["locales/*"],
-      "@styles/*": ["styles/*"]
+      "@metadata/*": ["metadata/*"],
+      "@schemas/*": ["schemas/*"],
+      "@services/*": ["services/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"]
     },
     "plugins": [
       {

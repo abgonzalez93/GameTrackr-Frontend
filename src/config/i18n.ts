@@ -13,7 +13,7 @@ import i18next from 'i18next'
  *
  * @module config
  */
-i18next.init({
+export default i18next.init({
   lng: 'es',
   fallbackLng: 'en',
   resources: {
@@ -24,8 +24,3 @@ i18next.init({
     escapeValue: false,
   },
 })
-
-/**
- * Exported instance of i18next to be used throughout the app for translation.
- */
-export default i18next

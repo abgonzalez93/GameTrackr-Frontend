@@ -2,14 +2,13 @@
   "directory": [
     "./src/config",
     "./src/constants",
-    "./src/fonts",
     "./src/hooks",
-    "./src/lib",
-    "./src/lib/api",
-    "./src/lib/errors",
-    "./src/lib/metadata",
-    "./src/lib/schemas",
-    "./src/lib/utils"
+    "./src/errors",
+    "./src/fonts",
+    "./src/metadata",
+    "./src/schemas",
+    "./src/services",
+    "./src/utils"
   ],
   "name": "index.ts",
   "structure": "flat",
