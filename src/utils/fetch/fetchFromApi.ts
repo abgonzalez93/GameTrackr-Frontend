@@ -1,5 +1,5 @@
-import { ApiErrorResponseSchema } from 'schemas/index'
-import { ApiError } from 'errors/index'
+import { ApiErrorResponseSchema } from '@schemas/index'
+import { ApiError } from '@errors/index'
 import { APP } from '@constants/index'
 
 type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'

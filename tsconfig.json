@@ -13,20 +13,20 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@config/*": ["config/*"],
-      "@constants/*": ["constants/*"],
-      "@errors/*": ["errors/*"],
-      "@fonts/*": ["fonts/*"],
-      "@hooks/*": ["hooks/*"],
-      "@locales/*": ["locales/*"],
-      "@metadata/*": ["metadata/*"],
-      "@schemas/*": ["schemas/*"],
-      "@services/*": ["services/*"],
-      "@styles/*": ["styles/*"],
-      "@utils/*": ["utils/*"]
+      "@components/*": ["src/components/*"],
+      "@config/*": ["src/config/*"],
+      "@constants/*": ["src/constants/*"],
+      "@errors/*": ["src/errors/*"],
+      "@fonts/*": ["src/fonts/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@locales/*": ["src/locales/*"],
+      "@metadata/*": ["src/metadata/*"],
+      "@schemas/*": ["src/schemas/*"],
+      "@services/*": ["src/services/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "plugins": [
       {

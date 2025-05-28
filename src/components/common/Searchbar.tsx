@@ -12,7 +12,7 @@ export const Searchbar = () => {
 
   const handleSearch = async () => {
     if (!query.trim()) return
-    const data = await games.search({ q: query, limit: 12 })
+    const data = await games.search({ q: query })
     setResults(data)
   }
 
