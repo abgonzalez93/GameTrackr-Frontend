@@ -2,7 +2,7 @@ import { Button } from '@components/index'
 import { Ghost } from 'lucide-react'
 import Link from 'next/link'
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <section className="flex flex-col items-center justify-center h-full text-center px-4 py-16">
       <Ghost className="w-16 h-16 text-muted-foreground mb-6" />
@@ -14,3 +14,5 @@ export default function NotFound() {
     </section>
   )
 }
+
+export default NotFound

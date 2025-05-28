@@ -17,4 +17,6 @@ export const APP = {
 
   APP_BASE_URL: env.APP_BASE_URL,
   API_BASE_URL: env.API_BASE_URL,
+
+  MAX_GAME_LIMIT: 50,
 }

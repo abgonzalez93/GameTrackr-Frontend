@@ -1,29 +1,43 @@
-import { IGDBGame, IGDBGameFilters } from 'schemas/index'
-import { fetchFromApi } from 'utils/index'
+import { IGDBGame, IGDBGameFilters } from '@schemas/index'
+import { fetchFromApi } from '@utils/index'
 
 /**
- * API client for interacting with the /games endpoint.
+ * API client for interacting with the backend /games endpoints.
  *
- * @module api
+ * This module handles game-related API operations, including:
+ * - Searching games with filters
+ * - Fetching game details by IGDB ID
+ *
+ * @module services/api
  */
 export const games = {
   /**
-   * Fetch all games with optional filters.
+   * Search games using full-text query and optional filters.
    *
-   * @param filters - Optional filters (search, genre, platform, etc.)
-   * @returns List of games from the API.
+   * Calls the backend endpoint: `GET /games/search`
+   *
+   * @example
+   * const results = await games.search({ q: 'zelda', limit: 10 })
+   *
+   * @param filters - Filtering, sorting and pagination options
+   * @returns A promise that resolves to a list of matching IGDB games
    */
-  async getAll(filters: Partial<IGDBGameFilters> = {}): Promise<IGDBGame[]> {
-    return fetchFromApi.get<IGDBGame[]>('/games', { filters })
+  async search(filters: Partial<IGDBGameFilters> = {}): Promise<IGDBGame[]> {
+    return fetchFromApi.get<IGDBGame[]>('/games/search', { filters })
   },
 
   /**
-   * Fetch a single game by its ID.
+   * Fetch a single game by its IGDB ID.
    *
-   * @param id - The game ID
-   * @returns Game data or null if not found
+   * Calls the backend endpoint: `GET /games/:id`
+   *
+   * @example
+   * const game = await games.getById(12345)
+   *
+   * @param id - The IGDB game ID
+   * @returns A promise that resolves to the game data, or null if not found
    */
   async getById(id: number): Promise<IGDBGame | null> {
-    return await fetchFromApi.get<IGDBGame>(`/games/${id}`)
+    return fetchFromApi.get<IGDBGame>(`/games/${id}`)
   },
 }

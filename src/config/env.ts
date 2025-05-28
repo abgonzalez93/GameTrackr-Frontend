@@ -30,5 +30,5 @@ export const env = {
   IS_DEVELOPMENT: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
 
   APP_BASE_URL: process.env.APP_BASE_URL || 'http://localhost:3000',
-  API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:4000',
+  API_BASE_URL: process.env.API_BASE_URL || 'http://gametrackr-backend:4000',
 }

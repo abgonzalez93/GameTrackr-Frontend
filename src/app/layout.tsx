@@ -6,7 +6,7 @@ import '@styles/globals.css'
 
 export const metadata = defaultMetadata
 
-export default async function Layout({ children }: { children: React.ReactNode }) {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang={APP.DEFAULT_LANGUAGE}>
       <body className={roboto.variable}>
@@ -15,3 +15,5 @@ export default async function Layout({ children }: { children: React.ReactNode }
     </html>
   )
 }
+
+export default Layout
