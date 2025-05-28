@@ -47,10 +47,7 @@ const buildQueryParams = (filters: Record<string, unknown>): string => {
  * @param options - Fetch options, possibly including a `query` object
  * @returns An object with the final endpoint string and cleaned options
  */
-const prepareRequestInput = (
-  endpoint: string,
-  options?: FetchParams,
-): { endpoint: string; options: FetchParams } => {
+const prepareRequestInput = (endpoint: string, options?: FetchParams): { endpoint: string; options: FetchParams } => {
   const { filters, ...restOptions } = options ?? {}
   const queryString = filters ? buildQueryParams(filters) : ''
   return {
@@ -67,11 +64,7 @@ const prepareRequestInput = (
  * @param options - Optional fetch configuration
  * @returns The raw Response object
  */
-const performRequest = (
-  method: Method,
-  endpoint: string,
-  options: FetchParams = {},
-): Promise<Response> => {
+const performRequest = (method: Method, endpoint: string, options: FetchParams = {}): Promise<Response> => {
   return fetch(`${APP.API_BASE_URL}${endpoint}`, {
     method,
     headers: {
@@ -130,11 +123,7 @@ const handleErrorResponse = (res: Response, parsed: unknown): never => {
  * @returns A promise resolving to the parsed JSON response as type T
  * @throws ApiError if the request fails or the response is not OK
  */
-const request = async <T>(
-  method: Method,
-  endpoint: string,
-  options: FetchParams = {},
-): Promise<T> => {
+const request = async <T>(method: Method, endpoint: string, options: FetchParams = {}): Promise<T> => {
   const res = await performRequest(method, endpoint, options)
   const parsed = await parseResponseBody(res)
 
@@ -163,13 +152,8 @@ const method = <T>(method: Method, endpoint: string, options?: FetchParams): Pro
  */
 export const fetchFromApi = {
   get: <T>(endpoint: string, options?: FetchParams) => method<T>('GET', endpoint, options),
-
   post: <T>(endpoint: string, options?: FetchParams) => method<T>('POST', endpoint, options),
-
   put: <T>(endpoint: string, options?: FetchParams) => method<T>('PUT', endpoint, options),
-
   patch: <T>(endpoint: string, options?: FetchParams) => method<T>('PATCH', endpoint, options),
-
-  delete: <T = void>(endpoint: string, options?: FetchParams) =>
-    method<T>('DELETE', endpoint, options),
+  delete: <T = void>(endpoint: string, options?: FetchParams) => method<T>('DELETE', endpoint, options),
 }
