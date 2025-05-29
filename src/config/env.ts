@@ -1,16 +1,4 @@
-import { EnvError } from '@errors/index'
-
-/**
- * Environment configuration loader.
- * Loads required environment variables and provides fallbacks for development.
- *
- * @module utils/env
- */
-const required = (name: string): string => {
-  const value = process.env[name]
-  if (!value) throw new EnvError(name)
-  return value
-}
+import { env as coreEnv } from '@trackplay/core/config'
 
 /**
  * Environment configuration.
@@ -24,11 +12,7 @@ const required = (name: string): string => {
  * @module config/env
  */
 export const env = {
-  NODE_ENV: process.env.NODE_ENV || 'development',
-
-  IS_PRODUCTION: process.env.NODE_ENV === 'production',
-  IS_DEVELOPMENT: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
-
+  ...coreEnv,
   APP_BASE_URL: process.env.APP_BASE_URL || 'http://localhost:3000',
   API_SERVER_BASE_URL: process.env.API_SERVER_BASE_URL || 'http://trackplay-backend:4000',
   API_CLIENT_BASE_URL: process.env.API_CLIENT_BASE_URL || 'https://api.trackplay.localhost',

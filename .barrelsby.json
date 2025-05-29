@@ -4,10 +4,8 @@
     "./src/config",
     "./src/constants",
     "./src/hooks",
-    "./src/errors",
     "./src/fonts",
     "./src/metadata",
-    "./src/schemas",
     "./src/services",
     "./src/utils"
   ],

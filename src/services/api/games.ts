@@ -1,4 +1,4 @@
-import { IGDBGame, IGDBGameFilters } from '@schemas/index'
+import { IGDBGame, IGDBGameFilters } from '@trackplay/core/schemas'
 import { fetchFromApi } from '@utils/index'
 
 /**

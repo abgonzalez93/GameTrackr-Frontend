@@ -1,4 +1,4 @@
-import { IGDBGameFilters } from '@schemas/index'
+import { IGDBGameFilters } from '@trackplay/core/schemas'
 import { GameCard } from '@components/index'
 import { games } from '@services/index'
 

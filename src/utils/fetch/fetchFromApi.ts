@@ -1,5 +1,5 @@
-import { ApiErrorResponseSchema } from '@schemas/index'
-import { ApiError } from '@errors/index'
+import { ApiErrorResponseSchema } from '@trackplay/core/schemas'
+import { ApiError } from '@trackplay/core/errors'
 import { APP } from '@constants/index'
 
 type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'

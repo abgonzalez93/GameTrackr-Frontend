@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@components/index'
-import { IGDBGame } from '@schemas/index'
+import { IGDBGame } from '@trackplay/core/schemas'
 
 type GameCardProps = {
   game: IGDBGame

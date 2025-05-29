@@ -1,7 +1,7 @@
 'use client'
 
 import { GameCard, Button, Input } from '@components/index'
-import { IGDBGame } from '@schemas/index'
+import { IGDBGame } from '@trackplay/core/schemas'
 import { games } from '@services/index'
 import { Search } from 'lucide-react'
 import { useState } from 'react'

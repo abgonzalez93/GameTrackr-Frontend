@@ -18,12 +18,10 @@
       "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@constants/*": ["constants/*"],
-      "@errors/*": ["errors/*"],
       "@fonts/*": ["fonts/*"],
       "@hooks/*": ["hooks/*"],
       "@locales/*": ["locales/*"],
       "@metadata/*": ["metadata/*"],
-      "@schemas/*": ["schemas/*"],
       "@services/*": ["services/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"]
