@@ -6,7 +6,7 @@ import { env } from '@config/index'
  * @module constant
  */
 export const APP = {
-  NAME: 'GameTrackr',
+  NAME: 'TrackPlay',
 
   DEFAULT_LANGUAGE: 'es',
   SUPPORTED_LANGUAGES: ['es', 'en'] as const,

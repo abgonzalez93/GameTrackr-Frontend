@@ -15,7 +15,6 @@
     "incremental": true,
     "baseUrl": "./src",
     "paths": {
-      "@gametrackr-core/*": ["/core/src/*"],
       "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@constants/*": ["constants/*"],

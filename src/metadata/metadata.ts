@@ -6,23 +6,23 @@ import { Metadata } from 'next'
  * @module metadata
  */
 export const metadata: Metadata = {
-  title: 'GameTrackr',
+  title: 'TrackPlay',
   description: 'Trackea y organiza tus videojuegos favoritos.',
   keywords: ['videojuegos', 'tracking', 'biblioteca'],
-  authors: [{ name: 'GameTrackr Team' }],
-  creator: 'GameTrackr',
-  metadataBase: new URL('https://gametrackr.es'),
+  authors: [{ name: 'TrackPlay Team' }],
+  creator: 'TrackPlay',
+  metadataBase: new URL('https://trackplay.es'),
   openGraph: {
-    title: 'GameTrackr',
+    title: 'TrackPlay',
     description: 'Trackea y organiza tus videojuegos favoritos.',
     type: 'website',
     locale: 'es_ES',
-    url: 'https://gametrackr.es',
-    siteName: 'GameTrackr',
+    url: 'https://trackplay.es',
+    siteName: 'TrackPlay',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GameTrackr',
+    title: 'TrackPlay',
     description: 'Trackea y organiza tus videojuegos favoritos.',
   },
 }

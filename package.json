@@ -1,6 +1,7 @@
 {
   "type": "module",
-  "name": "gametrackr-frontend",
+  "name": "@trackpplay/frontend",
+  "author": "Antonio Bueno Gonzalez",
   "version": "1.0.0",
   "private": true,
   "scripts": {
