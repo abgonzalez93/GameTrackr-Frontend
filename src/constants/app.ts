@@ -16,7 +16,7 @@ export const APP = {
   IS_DEVELOPMENT: env.IS_DEVELOPMENT,
 
   APP_BASE_URL: env.APP_BASE_URL,
-  API_BASE_URL: env.API_BASE_URL,
+  API_BASE_URL: typeof window === 'undefined' ? env.API_SERVER_BASE_URL : env.API_CLIENT_BASE_URL,
 
   MAX_GAME_LIMIT: 50,
 }
