@@ -49,7 +49,10 @@ const buildQueryParams = (filters: Record<string, unknown>): string => {
  * @param options - Fetch options, possibly including a `query` object
  * @returns An object with the final endpoint string and cleaned options
  */
-const prepareRequestInput = (endpoint: string, options?: FetchParams): { endpoint: string; options: FetchParams } => {
+const prepareRequestInput = (
+  endpoint: string,
+  options?: FetchParams,
+): { endpoint: string; options: Omit<FetchParams, 'filters'> } => {
   const { filters, ...restOptions } = options ?? {}
   const queryString = filters ? buildQueryParams(filters) : ''
   return {
