@@ -13,7 +13,6 @@ import { env as coreEnv } from '@trackplay/core/config'
  */
 export const env = {
   ...coreEnv,
-  APP_BASE_URL: process.env.APP_BASE_URL || 'http://localhost:3000',
-  API_SERVER_BASE_URL: process.env.API_SERVER_BASE_URL || 'http://trackplay-backend:4000',
-  API_CLIENT_BASE_URL: process.env.API_CLIENT_BASE_URL || 'https://api.trackplay.localhost',
+  APP_BASE_URL: process.env.APP_BASE_URL || 'https://trackplay.localhost',
+  API_BASE_URL: process.env.API_SERVER_BASE_URL || 'https://api.trackplay.localhost',
 }
