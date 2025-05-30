@@ -1,5 +1,5 @@
 # Imagen base estable
-FROM node:alpine
+FROM node:24.0-slim
 
 # Variables de entorno necesarias para nvm
 ENV NVM_DIR=/root/.nvm
@@ -30,9 +30,6 @@ RUN npm install --silent && npm cache clean --force
 
 # Luego copia el resto del código
 COPY . .
-
-# Expone el puerto del frontend
-EXPOSE 3000
 
 # Comando de arranque
 CMD ["npm", "run", "dev"]
