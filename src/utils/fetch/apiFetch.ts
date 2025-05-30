@@ -1,4 +1,5 @@
 import { ApiErrorResponseSchema } from '@trackplay/core/schemas'
+import { HTTP_STATUS } from '@trackplay/core/constants'
 import { ApiError } from '@trackplay/core/errors'
 import { APP } from '@constants/index'
 
@@ -10,6 +11,7 @@ type FetchParams = {
   cache?: RequestCache
   next?: NextFetchRequestConfig
   filters?: Record<string, unknown>
+  timeoutMs?: number
 }
 
 /**
@@ -51,7 +53,7 @@ const prepareRequestInput = (endpoint: string, options?: FetchParams): { endpoin
   const { filters, ...restOptions } = options ?? {}
   const queryString = filters ? buildQueryParams(filters) : ''
   return {
-    endpoint: `${endpoint}${queryString}`,
+    endpoint: `${APP.API_BASE_URL}${endpoint}${queryString}`,
     options: restOptions,
   }
 }
@@ -64,17 +66,29 @@ const prepareRequestInput = (endpoint: string, options?: FetchParams): { endpoin
  * @param options - Optional fetch configuration
  * @returns The raw Response object
  */
-const performRequest = (method: Method, endpoint: string, options: FetchParams = {}): Promise<Response> => {
-  return fetch(`${APP.API_BASE_URL}${endpoint}`, {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    body: options.body ?? null,
-    cache: options.cache ?? 'no-store',
-    next: options.next,
-  })
+const performRequest = async (
+  method: Method,
+  endpoint: string,
+  options: Omit<FetchParams, 'filters'>,
+): Promise<Response> => {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), options.timeoutMs ?? 8000)
+
+  try {
+    return await fetch(endpoint, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers,
+      },
+      body: options.body ?? null,
+      cache: options.cache ?? 'no-store',
+      next: options.next,
+      signal: controller.signal,
+    })
+  } finally {
+    clearTimeout(timeout)
+  }
 }
 
 /**
@@ -84,11 +98,10 @@ const performRequest = (method: Method, endpoint: string, options: FetchParams =
  * @returns Parsed body as `unknown`
  */
 const parseResponseBody = async (res: Response): Promise<unknown> => {
-  try {
-    return await res.json()
-  } catch {
-    return await res.text()
-  }
+  if (res.status === HTTP_STATUS.NO_CONTENT) return null
+  const contentType = res.headers.get('content-type')
+  if (contentType?.includes('application/json')) return await res.json()
+  return await res.text()
 }
 
 /**
