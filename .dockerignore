@@ -1,8 +1,25 @@
-node_modules
-Dockerfile
-.dockerignore
+# Node modules (will be installed inside the container)
+node_modules/
+
+# Git
 .git
 .gitignore
-README.md
-.env
+
+# Build output
 .next
+
+# Editor / IDE config
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Documentation
+README.md
+LICENSE
+
+# Docker metadata
+Dockerfile
+.dockerignore

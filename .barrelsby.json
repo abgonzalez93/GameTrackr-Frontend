@@ -1,0 +1,19 @@
+{
+  "directory": [
+    "./src/components",
+    "./src/config",
+    "./src/constants",
+    "./src/hooks",
+    "./src/fonts",
+    "./src/metadata",
+    "./src/services",
+    "./src/utils"
+  ],
+  "name": "index.ts",
+  "structure": "flat",
+  "location": "all",
+  "delete": true,
+  "singleQuotes": true,
+  "noHeader": true,
+  "noSemicolon": true
+}
