@@ -1,1 +1,1 @@
-export * from './fetchFromApi'
+export * from './apiFetch'

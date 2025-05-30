@@ -1,5 +1,5 @@
 import { IGDBGame, IGDBGameFilters } from '@trackplay/core/schemas'
-import { fetchFromApi } from '@utils/index'
+import { apiFetch } from '@utils/index'
 
 /**
  * API client for interacting with the backend /games endpoints.
@@ -23,7 +23,7 @@ export const games = {
    * @returns A promise that resolves to a list of matching IGDB games
    */
   async search(filters: Partial<IGDBGameFilters> = {}): Promise<IGDBGame[]> {
-    return fetchFromApi.get<IGDBGame[]>('/games/search', { filters })
+    return apiFetch.get<IGDBGame[]>('/games/search', { filters })
   },
 
   /**
@@ -38,6 +38,6 @@ export const games = {
    * @returns A promise that resolves to the game data, or null if not found
    */
   async getById(id: number): Promise<IGDBGame | null> {
-    return fetchFromApi.get<IGDBGame>(`/games/${id}`)
+    return apiFetch.get<IGDBGame>(`/games/${id}`)
   },
 }
