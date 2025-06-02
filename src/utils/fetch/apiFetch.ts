@@ -2,6 +2,7 @@ import { ApiErrorResponseSchema } from '@trackplay/core/schemas'
 import { HTTP_STATUS } from '@trackplay/core/constants'
 import { ApiError } from '@trackplay/core/errors'
 import { APP } from '@constants/index'
+import { extractErrorMessage } from '@trackplay/core/utils'
 
 type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
@@ -140,10 +141,15 @@ const handleErrorResponse = (res: Response, parsed: unknown): never => {
  * @throws ApiError if the request fails or the response is not OK
  */
 const request = async <T>(method: Method, endpoint: string, options: FetchParams = {}): Promise<T> => {
-  const res = await performRequest(method, endpoint, options)
-  const parsed = await parseResponseBody(res)
-  if (!res.ok) handleErrorResponse(res, parsed)
-  return parsed as T
+  try {
+    const res = await performRequest(method, endpoint, options)
+    const parsed = await parseResponseBody(res)
+    if (!res.ok) handleErrorResponse(res, parsed)
+    return parsed as T
+  } catch (error: unknown) {
+    const message = extractErrorMessage(error)
+    throw new ApiError(`Request error: ${message}`, HTTP_STATUS.BAD_GATEWAY)
+  }
 }
 
 /**

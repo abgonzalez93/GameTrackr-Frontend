@@ -1,5 +1,4 @@
 import { APP as coreApp } from '@trackplay/core/constants'
-import { env } from '@config/index'
 
 /**
  * General configuration constants for the application.
@@ -11,6 +10,6 @@ export const APP = {
   NAME: 'TrackPlay',
   DEFAULT_LANGUAGE: 'es',
   SUPPORTED_LANGUAGES: ['es', 'en'] as const,
-  APP_BASE_URL: env.APP_BASE_URL,
-  API_BASE_URL: env.API_BASE_URL,
+  APP_BASE_URL: 'https://trackplay.localhost',
+  API_BASE_URL: 'https://api.trackplay.localhost',
 }
