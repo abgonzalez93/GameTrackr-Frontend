@@ -1,10 +1,6 @@
 # Node modules (will be installed inside the container)
 node_modules/
 
-# Git
-.git
-.gitignore
-
 # Build output
 .next
 
@@ -15,10 +11,6 @@ node_modules/
 # Logs
 *.log
 logs/
-
-# Documentation
-README.md
-LICENSE
 
 # Docker metadata
 Dockerfile
