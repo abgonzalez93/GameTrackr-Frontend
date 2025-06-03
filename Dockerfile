@@ -1,27 +1,27 @@
-# Imagen base estable
+# Imagen base ligera
 FROM node:24.0-slim
 
 # Crea carpeta de trabajo
 WORKDIR /app
 
-# Copia el .npmrc antes del npm install
-COPY .npmrc .npmrc
+# Copia sólo lo necesario para instalar dependencias
+COPY package.json package-lock.json .npmrc* ./
 
-# Copia archivos necesarios
-COPY package*.json ./
+# Instala dependencias del sistema (incluye OpenSSL)
+RUN apt-get update -y && \
+    apt-get install -y openssl && \
+    npm ci --silent && \
+    npm cache clean --force && \
+    rm -f .npmrc && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# Luego copia el resto del código
-COPY . .
+# Copia configuraciones necesarias
+COPY tsconfig.json next-env.d.ts next.config.ts postcss.config.mjs ./
 
-# Actualiza e instala herramientas necesarias
-RUN apt update \
-  && apt install -y --no-install-recommends git ca-certificates curl \
-  && npm install -g npm \
-  && npm install -g npm-check-updates \
-  && apt clean && rm -rf /var/lib/apt/lists/*
+# Copia sólo el código fuente y prisma
+COPY public ./public
+COPY src ./src
 
-# Instala dependencias en silencio
-RUN npm install --silent && npm cache clean --force
-
-# Comando de arranque
+# Comando de arranque en desarrollo
 CMD ["npm", "run", "dev"]

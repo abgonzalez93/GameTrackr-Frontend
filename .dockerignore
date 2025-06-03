@@ -1,17 +1,30 @@
-# Node modules (will be installed inside the container)
+# Node modules
 node_modules/
 
-# Build output
-.next
+# Logs
+logs/
+*.log
 
-# Editor / IDE config
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Config
+README.md
+LICENSE
+components.json
+
+# Editor config
 .vscode/
 .idea/
 
-# Logs
-*.log
-logs/
+# Build output / TypeScript artifacts
+.next/
 
-# Docker metadata
-Dockerfile
-.dockerignore
+# Misc
+*.md
+*.env*
