@@ -1,5 +1,5 @@
 import { IGDBGame, IGDBGameFilters } from '@trackplay/core/schemas'
-import { apiFetch } from '@utils/index'
+import { apiFetch } from '@trackplay/core/utils'
 
 /**
  * API client for interacting with the backend /games endpoints.

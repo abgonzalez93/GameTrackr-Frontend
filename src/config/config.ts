@@ -1,4 +1,4 @@
-import { env as coreEnv } from '@trackplay/core/config'
+import { clientConf } from '@trackplay/core/config'
 
 /**
  * Environment configuration.
@@ -9,8 +9,8 @@ import { env as coreEnv } from '@trackplay/core/config'
  * Each variable is either loaded directly from `process.env`, has a default fallback,
  * or is enforced as required using the `required` function.
  *
- * @module config/env
+ * @module config
  */
-export const env = {
-  ...coreEnv,
+export const config = {
+  ...clientConf,
 }
