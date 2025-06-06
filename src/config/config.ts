@@ -1,4 +1,4 @@
-import { getClientConf } from '@trackplay/core/config'
+import { required, getClientConf } from '@trackplay/core/config'
 
 /**
  * Environment configuration.
@@ -13,4 +13,7 @@ import { getClientConf } from '@trackplay/core/config'
  */
 export const getConf = () => ({
   ...getClientConf(),
+  INTERNAL_API_URL: required('INTERNAL_API_URL'),
+  PUBLIC_API_URL: required('PUBLIC_API_URL'),
+  PUBLIC_FRONTEND_URL: required('PUBLIC_FRONTEND_URL'),
 })
