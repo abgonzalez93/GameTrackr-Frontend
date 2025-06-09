@@ -2,8 +2,6 @@ import { IGDBGame, IGDBGameFilters } from '@trackplay/core/schemas'
 import { apiFetch } from '@trackplay/core/utils'
 import { getApiBaseUrl } from '@utils/index'
 
-const API_URL = getApiBaseUrl()
-
 /**
  * API client for interacting with the backend /games endpoints.
  *
@@ -26,7 +24,8 @@ export const games = {
    * @returns A promise that resolves to a list of matching IGDB games
    */
   async search(filters: Partial<IGDBGameFilters> = {}): Promise<IGDBGame[]> {
-    return apiFetch.post<IGDBGame[]>(`${API_URL}/games/search`, { filters })
+    const API_URL = getApiBaseUrl()
+    return apiFetch.get<IGDBGame[]>(`${API_URL}/games/search`, { filters })
   },
 
   /**
@@ -41,6 +40,7 @@ export const games = {
    * @returns A promise that resolves to the game data, or null if not found
    */
   async getById(id: number): Promise<IGDBGame | null> {
+    const API_URL = getApiBaseUrl()
     return apiFetch.get<IGDBGame>(`${API_URL}/games/${id}`)
   },
 }

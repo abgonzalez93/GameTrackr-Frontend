@@ -1,19 +1,19 @@
-import { getConf } from '@config/index'
+import { getClientEnvConfig, getServerEnvConfig } from '@config/index'
 
 /**
  * Returns the appropriate API base URL depending on the runtime environment.
  *
- * - On the server side (SSR, API routes, server actions): returns internal API URL (no proxy, HTTP)
- * - On the client side (browser): returns public API URL (via reverse proxy, HTTPS)
+ * - On the server side (SSR, API routes, server actions), it returns the internal base URL
+ *   (`INTERNAL_API_URL`) for direct internal HTTP requests.
+ * - On the client side (browser), it returns the public base URL (`NEXT_PUBLIC_API_URL`)
+ *   routed through the reverse proxy over HTTPS.
  *
- * @returns {string} The correct base URL for API requests.
+ * @returns {string} The correct base URL to use in API fetch requests.
  *
  * @example
- * const baseUrl = getApiBaseUrl()
- * const res = await fetch(`${baseUrl}/games`)
+ * const url = getApiBaseUrl();
+ * const res = await fetch(`${url}/games`);
  */
 export const getApiBaseUrl = (): string => {
-  const { INTERNAL_API_URL, PUBLIC_API_URL } = getConf()
-  const isServer = typeof window === 'undefined'
-  return isServer ? INTERNAL_API_URL : PUBLIC_API_URL
+  return typeof window === 'undefined' ? getServerEnvConfig.INTERNAL_API_URL : getClientEnvConfig.NEXT_PUBLIC_API_URL
 }
