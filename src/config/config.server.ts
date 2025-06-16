@@ -1,11 +1,15 @@
+import { NodeEnvSchema, UrlStringSchema } from '@trackplay/core/schemas'
 import { createEnv } from '@t3-oss/env-nextjs'
-import { z } from 'zod'
 
 export const getServerEnvConfig = createEnv({
   server: {
-    NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-    INTERNAL_API_URL: z.string().url(),
+    NODE_ENV: NodeEnvSchema,
+
+    INTERNAL_API_URL: UrlStringSchema,
   },
-  experimental__runtimeEnv: process.env,
+  runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
+    INTERNAL_API_URL: process.env.INTERNAL_API_URL,
+  },
   emptyStringAsUndefined: true,
 })

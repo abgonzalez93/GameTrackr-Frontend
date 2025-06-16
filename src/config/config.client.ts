@@ -1,10 +1,10 @@
+import { UrlStringSchema } from '@trackplay/core/schemas'
 import { createEnv } from '@t3-oss/env-nextjs'
-import { z } from 'zod'
 
 export const getClientEnvConfig = createEnv({
   client: {
-    NEXT_PUBLIC_API_URL: z.string().url(),
-    NEXT_PUBLIC_FRONTEND_URL: z.string().url(),
+    NEXT_PUBLIC_API_URL: UrlStringSchema,
+    NEXT_PUBLIC_FRONTEND_URL: UrlStringSchema,
   },
   runtimeEnv: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,

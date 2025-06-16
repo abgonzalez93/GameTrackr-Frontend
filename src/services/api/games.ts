@@ -8,8 +8,6 @@ import { getApiBaseUrl } from '@utils/index'
  * This module handles game-related API operations, including:
  * - Searching games with filters
  * - Fetching game details by IGDB ID
- *
- * @module services/api
  */
 export const games = {
   /**

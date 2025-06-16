@@ -1,7 +1,5 @@
 /**
  * General configuration constants for the application.
- *
- * @module constant
  */
 export const APP = {
   NAME: 'TrackPlay',

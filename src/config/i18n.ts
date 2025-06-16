@@ -10,8 +10,6 @@ import i18next from 'i18next'
  * - Fallback language: English (`en`)
  * - Translation namespaces: uses the default `translation` key
  * - Interpolation settings: disables HTML escaping
- *
- * @module config
  */
 export default i18next.init({
   lng: 'es',

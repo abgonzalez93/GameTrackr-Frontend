@@ -2,8 +2,6 @@ import { Metadata } from 'next'
 
 /**
  * Base metadata for the application.
- *
- * @module metadata
  */
 export const metadata: Metadata = {
   title: 'TrackPlay',
