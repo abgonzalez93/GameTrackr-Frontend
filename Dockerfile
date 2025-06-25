@@ -17,8 +17,6 @@ RUN npm ci --silent && \
 
 # Copia configuraciones necesarias
 COPY tsconfig.json next-env.d.ts next.config.ts postcss.config.mjs ./
-
-# Copia sólo el código fuente y prisma
 COPY public ./public
 COPY src ./src
 
