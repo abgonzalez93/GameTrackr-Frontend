@@ -16,12 +16,12 @@
     "incremental": true,
     "baseUrl": "./src",
     "paths": {
+      "@apis/*": ["apis/*"],
       "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@constants/*": ["constants/*"],
       "@fonts/*": ["fonts/*"],
       "@hooks/*": ["hooks/*"],
-      "@locales/*": ["locales/*"],
       "@metadata/*": ["metadata/*"],
       "@services/*": ["services/*"],
       "@styles/*": ["styles/*"],

@@ -1,6 +1,6 @@
 import { IGDBGameFilters } from '@trackplay/core/schemas'
 import { GameCard } from '@components/index'
-import { games } from '@services/index'
+import { games } from '@apis/index'
 
 type GameGridProps = {
   filters?: Partial<IGDBGameFilters>

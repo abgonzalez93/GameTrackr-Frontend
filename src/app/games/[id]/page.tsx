@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { games } from '@services/index'
+import { games } from '@apis/index'
 
 type GamePageProps = {
   params: { id: string }

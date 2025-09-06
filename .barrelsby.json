@@ -1,5 +1,6 @@
 {
   "directory": [
+    "./src/apis",
     "./src/components",
     "./src/config",
     "./src/constants",

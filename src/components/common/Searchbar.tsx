@@ -2,8 +2,8 @@
 
 import { GameCard, Button, Input } from '@components/index'
 import { IGDBGame } from '@trackplay/core/schemas'
-import { games } from '@services/index'
 import { Search } from 'lucide-react'
+import { games } from '@apis/index'
 import { useState } from 'react'
 
 export const Searchbar = () => {
