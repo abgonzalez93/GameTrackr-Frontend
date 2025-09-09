@@ -21,7 +21,7 @@ export const games = {
    * @param filters - Filtering, sorting and pagination options
    * @returns A promise that resolves to a list of matching IGDB games
    */
-  async search(filters: Partial<IGDBGameFilters> = {}): Promise<IGDBGame[]> {
+  search: async (filters: Partial<IGDBGameFilters> = {}): Promise<IGDBGame[]> => {
     const API_URL = getApiBaseUrl()
     return apiFetch.get<IGDBGame[]>(`${API_URL}/games/search`, { filters })
   },
@@ -37,7 +37,7 @@ export const games = {
    * @param id - The IGDB game ID
    * @returns A promise that resolves to the game data, or null if not found
    */
-  async getById(id: number): Promise<IGDBGame | null> {
+  getById: async (id: number): Promise<IGDBGame | null> => {
     const API_URL = getApiBaseUrl()
     return apiFetch.get<IGDBGame>(`${API_URL}/games/${id}`)
   },

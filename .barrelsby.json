@@ -7,7 +7,6 @@
     "./src/hooks",
     "./src/fonts",
     "./src/metadata",
-    "./src/services",
     "./src/utils"
   ],
   "name": "index.ts",

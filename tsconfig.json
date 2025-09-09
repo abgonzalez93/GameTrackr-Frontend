@@ -23,7 +23,6 @@
       "@fonts/*": ["fonts/*"],
       "@hooks/*": ["hooks/*"],
       "@metadata/*": ["metadata/*"],
-      "@services/*": ["services/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"]
     },
