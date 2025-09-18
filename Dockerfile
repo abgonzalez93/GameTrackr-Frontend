@@ -11,8 +11,8 @@ RUN apt-get update -y && \
 
 # Copia solo lo necesario para instalar dependencias
 COPY package.json package-lock.json .npmrc* ./
-RUN npm ci --silent && \
-    npm cache clean --force && \
+RUN pnpm ci --silent && \
+    pnpm cache clean --force && \
     rm -f .npmrc
 
 # Copia configuraciones necesarias
@@ -21,4 +21,4 @@ COPY public ./public
 COPY src ./src
 
 # Comando de arranque en desarrollo
-CMD ["npm", "run", "dev"]
+CMD ["pnpm", "run", "dev"]

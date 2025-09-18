@@ -1,17 +1,17 @@
 'use client'
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@components/index'
-import { IGDBGame } from '@trackplay/core/schemas'
+import { Game } from '@trackplay/core/schemas'
 
 type GameCardProps = {
-  game: IGDBGame
+  game: Game
 }
 
 export const GameCard = ({ game }: GameCardProps) => {
   return (
     <Card className="cursor-pointer transition hover:shadow">
       <CardHeader>
-        <CardTitle>{game.name}</CardTitle>
+        <CardTitle>{game.title}</CardTitle>
         <CardDescription>{game.slug}</CardDescription>
       </CardHeader>
       <CardContent />

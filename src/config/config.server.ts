@@ -4,7 +4,6 @@ import { createEnv } from '@t3-oss/env-nextjs'
 export const getServerEnvConfig = createEnv({
   server: {
     NODE_ENV: NodeEnvSchema,
-
     INTERNAL_API_URL: UrlSchema,
   },
   runtimeEnv: {

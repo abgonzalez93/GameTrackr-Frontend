@@ -12,7 +12,7 @@ const GamePage = async ({ params }: GamePageProps) => {
 
   return (
     <div className="max-w-3xl mx-auto space-y-4">
-      <h1 className="text-3xl font-bold">{game.name}</h1>
+      <h1 className="text-3xl font-bold">{game.title}</h1>
       <p className="text-muted-foreground">{game.slug}</p>
       {/* Más detalles luego: fecha, plataformas, rating, etc. */}
     </div>

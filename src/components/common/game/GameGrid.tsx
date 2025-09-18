@@ -1,9 +1,9 @@
-import { IGDBGameFilters } from '@trackplay/core/schemas'
+import { GameFilters } from '@trackplay/core/schemas'
 import { GameCard } from '@components/index'
 import { games } from '@apis/index'
 
 type GameGridProps = {
-  filters?: Partial<IGDBGameFilters>
+  filters?: GameFilters
 }
 
 export const GameGrid = async ({ filters = {} }: GameGridProps) => {
@@ -18,7 +18,7 @@ export const GameGrid = async ({ filters = {} }: GameGridProps) => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
       {results.map((game) => (
-        <GameCard key={game.id} game={game} />
+        <GameCard key={game.igdb_id} game={game} />
       ))}
     </div>
   )

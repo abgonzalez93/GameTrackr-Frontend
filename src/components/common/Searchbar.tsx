@@ -1,18 +1,18 @@
 'use client'
 
 import { GameCard, Button, Input } from '@components/index'
-import { IGDBGame } from '@trackplay/core/schemas'
+import { GameList } from '@trackplay/core/schemas'
 import { Search } from 'lucide-react'
 import { games } from '@apis/index'
 import { useState } from 'react'
 
 export const Searchbar = () => {
   const [query, setQuery] = useState('')
-  const [results, setResults] = useState<IGDBGame[] | null>(null)
+  const [results, setResults] = useState<GameList | null>(null)
 
   const handleSearch = async () => {
     if (!query.trim()) return
-    const data = await games.search({ q: query })
+    const data = await games.search({ query })
     setResults(data)
   }
 
@@ -35,7 +35,7 @@ export const Searchbar = () => {
       {results && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {results.map((game) => (
-            <GameCard key={game.id} game={game} />
+            <GameCard key={game.igdb_id} game={game} />
           ))}
         </div>
       )}
