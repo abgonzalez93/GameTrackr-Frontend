@@ -35,7 +35,7 @@ export const Searchbar = () => {
       {results && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {results.map((game) => (
-            <GameCard key={game.igdb_id} game={game} />
+            <GameCard key={game.ids.igdb} game={game} />
           ))}
         </div>
       )}

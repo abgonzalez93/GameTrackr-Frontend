@@ -18,7 +18,7 @@ export const GameGrid = async ({ filters = {} }: GameGridProps) => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
       {results.map((game) => (
-        <GameCard key={game.igdb_id} game={game} />
+        <GameCard key={game.ids.igdb} game={game} />
       ))}
     </div>
   )

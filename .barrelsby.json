@@ -11,7 +11,7 @@
   ],
   "name": "index.ts",
   "structure": "flat",
-  "location": "all",
+  "location": "top",
   "delete": true,
   "singleQuotes": true,
   "noHeader": true,
